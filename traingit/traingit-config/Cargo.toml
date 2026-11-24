@@ -1,0 +1,17 @@
+[package]
+name = "traingit-config"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description.workspace = true
+
+[dependencies]
+traingit-core = { path = "../traingit-core" }
+serde.workspace = true
+serde_json.workspace = true
+config.workspace = true
+chrono.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+toml.workspace = true

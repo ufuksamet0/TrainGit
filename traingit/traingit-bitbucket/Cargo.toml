@@ -1,0 +1,19 @@
+[package]
+name = "traingit-bitbucket"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description.workspace = true
+
+[dependencies]
+traingit-core = { path = "../traingit-core" }
+async-trait.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+reqwest.workspace = true

@@ -1,0 +1,81 @@
+[workspace]
+resolver = "2"
+members = [
+    "traingit-core",
+    "traingit-github",
+    "traingit-gitlab",
+    "traingit-bitbucket",
+    "traingit-gitea",
+    "traingit-collector",
+    "traingit-processor",
+    "traingit-exporter",
+    "traingit-cli",
+    "traingit-config",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/username/traingit"
+description = "AI eğitim verisi toplama aracı - GitHub, GitLab, Bitbucket, Gitea'dan kod/doküman/issue toplar"
+
+[workspace.dependencies]
+# Core
+tokio = { version = "1.40", features = ["full", "tracing"] }
+async-trait = "0.1.79"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+clap = { version = "4.5", features = ["derive", "env"] }
+config = { version = "0.15", features = ["toml", "json", "yaml"] }
+reqwest = { version = "0.12", features = ["json", "rustls-tls", "gzip", "brotli"] }
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.8", features = ["serde", "v4", "v7"] }
+sha2 = "0.10"
+dashmap = "6.1"
+parking_lot = "0.12"
+bytes = "1.5"
+futures = "0.3"
+toml = "0.8"
+
+# Git
+git2 = "0.18"
+octocrab = "0.54"
+gitlab = "0.1905"
+
+# Processing
+tree-sitter = "0.27"
+tree-sitter-rust = "0.24"
+tree-sitter-python = "0.25"
+tree-sitter-typescript = "0.23"
+tree-sitter-go = "0.25"
+tree-sitter-java = "0.23"
+tree-sitter-cpp = "0.23"
+tree-sitter-c = "0.24"
+tree-sitter-c-sharp = "0.24"
+similarity = "0.2"
+probabilistic-collections = "0.7"
+encoding_rs = "0.8"
+
+# Export
+arrow = { version = "60.0", features = ["json", "csv", "async", "ipc"] }
+parquet = { version = "31.0", features = ["arrow", "async", "snap", "brotli", "flate2", "lz4", "zstd"] }
+# hf-hub = { version = "0.5", features = ["async"] }  # optional, for push to hub
+
+# Testing
+tempfile = "3.10"
+mockito = "1.2"
+proptest = "1.4"
+instants = "0.1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev]
+debug = true
